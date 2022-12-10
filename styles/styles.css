@@ -1,4 +1,51 @@
 * {
   padding: 0px;
   margin: 0px;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: "header header header" "nav nav nav" "left content right" "footer footer footer";
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto auto 1fr auto;
+  grid-gap: 10px;
+  height: 100vh;
+}
+.container > * {
+  padding: 20px;
+}
+.container header {
+  grid-area: header;
+  background-color: #3cc47c;
+  height: 50px;
+}
+.container nav {
+  grid-area: nav;
+}
+.container nav li {
+  display: inline;
+}
+.container main {
+  grid-area: content;
+  text-align: center;
+}
+.container main .row {
+  width: 100%;
+  display: flex;
+}
+.container main .row article {
+  flex: 1;
+}
+.container aside:first-child {
+  grid-area: left;
+}
+.container aside:last-child {
+  grid-area: right;
+}
+.container footer {
+  grid-area: footer;
+  display: flex;
+}
+.container footer div {
+  flex: 1;
 }/*# sourceMappingURL=styles.css.map */

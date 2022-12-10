@@ -1,4 +1,77 @@
+$electric: #3cc47c;
+$forest: #1e392a;
+$light: #e9c893;
+$tin: #828081;
+
+
 * {
     padding: 0px;
     margin: 0px;
 }
+
+
+.container{
+
+    display: grid;
+
+    grid-template-areas:
+        "header header header"
+        "nav nav nav"
+        "left content right"
+        "footer footer footer";
+
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto auto 1fr auto;
+    grid-gap: 10px;
+    height: 100vh;
+
+    > *{
+        padding: 20px;
+    }
+
+    header{
+        grid-area: header;
+        background-color: $electric;
+        height: 50px;
+    }
+    
+    nav{
+        grid-area: nav;
+        li{
+            display: inline;
+        }
+    }
+
+    main{
+        grid-area: content;
+        text-align: center;
+
+        .row{
+            width: 100%;
+            display: flex;
+
+            article{
+                flex: 1;
+            }
+        }
+    }
+    
+    aside:first-child{
+        grid-area: left;
+    }
+    
+    aside:last-child{
+        grid-area: right;
+    }
+    
+    footer{
+        grid-area: footer;
+        display: flex;
+
+        div{
+            flex: 1;
+        }
+    }
+
+}
+
