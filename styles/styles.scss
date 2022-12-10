@@ -3,11 +3,30 @@ $forest: #1e392a;
 $light: #e9c893;
 $tin: #828081;
 
+$headerHeight: 140px;
+$navbarHeight: 60px;
+
 
 * {
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
+    font-family: "Segoe UI";
 }
+
+@keyframes wiggle{
+    0%, 100%{
+        transform: rotateZ(0deg);
+    }
+    33%{
+        transform: rotateZ(7deg);
+    }
+    66%{
+        transform: rotateZ(-7deg);
+    }
+}
+
+
 
 
 .container{
@@ -16,35 +35,94 @@ $tin: #828081;
 
     grid-template-areas:
         "header header header"
-        "nav nav nav"
+        "left nav right"
         "left content right"
         "footer footer footer";
 
     grid-template-columns: 200px 1fr 200px;
     grid-template-rows: auto auto 1fr auto;
-    grid-gap: 10px;
     height: 100vh;
 
     > *{
-        padding: 20px;
+        padding: 10px;
     }
 
     header{
         grid-area: header;
-        background-color: $electric;
-        height: 50px;
+        background-color: $forest;
+        height: $headerHeight;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        user-select: none;
+        z-index: 1000;
+        white-space: nowrap;
+
+        h1{
+            display: inline;
+            font-size: 6rem;
+            color: $light;
+            margin: 20px;
+            text-decoration: underline;
+        }
     }
     
     nav{
         grid-area: nav;
+        background-color: $forest;
+        box-shadow: 0px 6px 5px $tin;
+        display: flex;
+        justify-content: center;
+        position:fixed;
+        width: 100%;
+        top: $headerHeight;
+        height: $navbarHeight;
+        z-index: 1000;
+
+        ul{
+            display: flex;
+            gap: 40px;
+        }
         li{
             display: inline;
+        }
+
+        a{
+            text-decoration: none;
+            color: $light;
+            font-size: 2rem;
+            font-weight: 600;
+            text-shadow: -2px 2px 0 $forest;
+            
+        }
+
+        
+        li:hover{
+            animation: wiggle .5s ease;
         }
     }
 
     main{
         grid-area: content;
         text-align: center;
+        background-color: $light;
+        padding-top: $headerHeight + $navbarHeight;
+        padding-bottom: 100px;
+
+        > *{
+            margin: 0px;
+        }
+
+        h2, h1{
+            letter-spacing: 2px;
+            font-weight: bold;
+            
+        }
+
+        h1{
+            text-shadow: 1px 1px 8px $light;
+        }
 
         .row{
             width: 100%;
@@ -52,6 +130,38 @@ $tin: #828081;
 
             article{
                 flex: 1;
+                background-color: $forest;
+                color: white;
+                border-radius: 20px;
+                border: 0px solid $tin;
+                
+                margin: 10px;
+                padding: 10px;
+
+                &.clickable{
+                    cursor: pointer;
+                    &:hover{
+                        box-shadow: 5px 5px 5px black;
+                        transform: translateX(-5px) translateY(-5px);
+                    }
+                }
+
+                .imgCrop{
+                    width: 100%;
+                    max-height: 300px;
+                    overflow: hidden;
+                    border-radius: 10px;
+                    margin: 20px 0;
+                }
+
+                img{
+                    max-width: 100%;
+                    border-radius: 10px;
+                }
+
+                p{
+                    font-size: 1.5rem;
+                }
             }
         }
     }
@@ -67,11 +177,35 @@ $tin: #828081;
     footer{
         grid-area: footer;
         display: flex;
+        justify-content: center;
+        background-color: $forest;
+        height:60px;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        padding: 5px;
+        gap: 5%;
+        box-shadow: 0px -6px 5px $tin;
 
-        div{
-            flex: 1;
+        span{
+            color: $light;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        table{
+            border-spacing: 8px 0;
+        }
+
+        td{
+            color: $light;
+            &:first-child{
+                text-align: right;
+            }
+            a{
+                color: $light;
+            }
         }
     }
-
 }
 
