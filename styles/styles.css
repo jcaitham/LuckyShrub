@@ -2,7 +2,7 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: "Segoe UI";
+  font-family: "Segoe UI", "Verdana", "Geneva", sans-serif;
 }
 
 @-webkit-keyframes wiggle {
@@ -57,7 +57,8 @@
   display: inline;
   font-size: 6rem;
   color: #e9c893;
-  margin: 20px;
+  margin: 0 20px;
+  vertical-align: top;
   text-decoration: underline;
 }
 .container nav {
@@ -84,7 +85,6 @@
   color: #e9c893;
   font-size: 2rem;
   font-weight: 600;
-  text-shadow: -2px 2px 0 #1e392a;
 }
 .container nav li:hover {
   -webkit-animation: wiggle 0.5s ease;
